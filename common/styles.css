@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6, p, a, ul, span, li, img, inpot, button { margin: 0; padd
 
 h1, h2, h3, h4, h5, h6 { line-height: 1.5; font-weight: inherit; }
 
-h1, h2, h3, .font-beyond { font-family: 'beyond_the_mountainsregular', sans-serif; }
+h1, h2, h3,h4, .font-beyond { font-family: 'beyond_the_mountainsregular', sans-serif; }
 
 p { line-height: 1.7; font-size: 1.05em; font-weight: 400; color: #555; }
 
@@ -420,6 +420,8 @@ section {
 .story-area {
         position: relative;
         background: #fff;
+        padding: 100px 0 0;
+
 }
 
 .story-bg {
@@ -1534,6 +1536,10 @@ ul.icon li a{ padding: 10px;  }
 
 .w-10 {
         width: 10% !important;
+}
+
+.w-15 {
+        width: 15% !important;
 }
 
 .w-20 {
