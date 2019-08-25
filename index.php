@@ -19,28 +19,7 @@
 </head>
 <body>
 
-<header>
-        <div class="container">
-                <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <div class="right-area">
-                        <h6><a class="plr-20 color-white btn-fill-primary" href="#">COMMANDER: +213 558 74 69 73</a></h6>
-                </div><!-- right-area -->
-
-                <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
-                <ul class="main-menu font-mountainsre" id="main-menu">
-                        <li><a href="index.html">ACCUEIL</a></li>
-                        <li><a href="02_about_us.html">A PROPOS DE NOUS</a></li>
-                        <li><a href="03_menu.html">MENU</a></li>
-                        <li><a href="04_blog.html">//</a></li>
-                        <li><a href="05_contact.html">CONTACTEZ NOUS</a></li>
-                </ul>
-
-                <div class="clearfix"></div>
-        </div><!-- container -->
-</header>
-
+<?php include 'header.php'; ?>
 
 <section class="bg-1 h-900x main-slider pos-relative">
         <div class="triangle-up pos-bottom"></div>
@@ -306,36 +285,7 @@
         </div><!-- container -->
 </section>
 
-<footer class="pb-50  pt-70 pos-relative">
-        <div class="pos-top triangle-bottom"></div>
-        <div class="container-fluid">
-                <a href="index.html"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <div class="pt-30">
-                        <p class="underline-secondary"><b>Address:</b></p>
-                        <p>Zouaghi Constantine, ALGERIA 25019 </p>
-                </div>
-
-                <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Phone:</b></p>
-                        <a href="tel:+53 345 7953 32453 ">+213 558 74 69 73 </a>
-                </div>
-
-                <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Email:</b></p>
-                        <a href="mailto:yourmail@gmail.com"> ju3te_restaurant@gmail.com</a>
-                </div>
-
-                <ul class="icon mt-30">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                        <li><a href="#"><i class="ion-social-vimeo"></i></a></li>
-                </ul>
-        </div><!-- container -->
-</footer>
+<?php include 'footer.php'; ?>
 
 <!-- SCIPTS -->
 <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
