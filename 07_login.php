@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Luigi's</title>
+        <title>Serbili</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
@@ -69,37 +69,7 @@
             </div><!-- container-->
         </section><!-- counter-section-->
 
-
-        <footer class="pb-50  pt-70 pos-relative">
-            <div class="pos-top triangle-bottom"></div>
-            <div class="container-fluid">
-                <a href="index.html"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <div class="pt-30">
-                    <p class="underline-secondary"><b>Address:</b></p>
-                    <p>481 Creekside Lane Avila Beach, CA 93424 </p>
-                </div>
-
-                <div class="pt-30">
-                    <p class="underline-secondary mb-10"><b>Phone:</b></p>
-                    <a href="tel:+53 345 7953 32453 ">+53 345 7953 32453 </a>
-                </div>
-
-                <div class="pt-30">
-                    <p class="underline-secondary mb-10"><b>Email:</b></p>
-                    <a href="mailto:yourmail@gmail.com"> yourmail@gmail.com</a>
-                </div>
-
-                <ul class="icon mt-30">
-                    <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                    <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                    <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                    <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                    <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                    <li><a href="#"><i class="ion-social-vimeo"></i></a></li>
-                </ul>
-            </div><!-- container -->
-        </footer>
+        <?php include 'footer.php'; ?>
 
         <!-- SCIPTS -->
         <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
