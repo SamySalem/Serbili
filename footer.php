@@ -4,12 +4,12 @@
                 <a href="index.html"><img src="images/logo-white.png" alt="Logo"></a>
 
                 <div class="pt-30">
-                    <p class="underline-secondary"><b>Address:</b></p>
+                    <p class="underline-secondary"><b>Adresse:</b></p>
                     <p>Zouaghi Constantine, ALGERIA 25019 </p>
                 </div>
 
                 <div class="pt-30">
-                    <p class="underline-secondary mb-10"><b>Phone:</b></p>
+                    <p class="underline-secondary mb-10"><b>Telephone:</b></p>
                     <a href="tel:+53 345 7953 32453 ">+213 558 74 69 73 </a>
                 </div>
 
