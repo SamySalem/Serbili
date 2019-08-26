@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-        <title>Luigi's</title>
+        <title>Serbili</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta charset="UTF-8">
@@ -19,26 +19,7 @@
 </head>
 <body>
 
-<header>
-        <div class="container">
-                <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <div class="right-area">
-                        <h6><a class="plr-20 color-white btn-fill-primary" href="#">ORDER: +34 685 778 8892</a></h6>
-                </div><!-- right-area -->
-
-                <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
-                <ul class="main-menu font-mountainsre" id="main-menu">
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="02_about_us.html">ABOUT US</a></li>
-                        <li><a href="03_menu.html">SERVICES</a></li>
-                        <li><a href="05_contact.html">CONTACT</a></li>
-                </ul>
-
-                <div class="clearfix"></div>
-        </div><!-- container -->
-</header>
+<?php include 'header.php'; ?>
 
 
 <section class="bg-6 h-500x main-slider pos-relative">
@@ -81,40 +62,10 @@
 
 
 <div class="map-area h-700x mb--30">
-        <p><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1608.8776181416351!2d6.569626684917129!3d36.24543934653539!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12f165508776198d%3A0xdb40fccb54818c02!2sUnnamed%20Road%2C%20Ali%20Mendjeli!5e0!3m2!1sen!2sdz!4v1566819689148!5m2!1sen!2sdz" width="1000" height="700" frameborder="0" style="border:0;" allowfullscreen=""  class="rounded mx-auto d-block"></iframe></p>
+        <div id="map" style="height:100%;"></div>
 </div><!-- map-area -->
 
-<footer class="pb-50  pt-70 pos-relative footer-bg-1">
-
-        <div class="container-fluid">
-                <a href="index.html"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <div class="pt-30">
-                        <p class="underline-secondary"><b>Address:</b></p>
-                        <p>481 Creekside Lane Avila Beach, CA 93424 </p>
-                </div>
-
-                <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Phone:</b></p>
-                        <a href="tel:+53 345 7953 32453 ">+53 345 7953 32453 </a>
-                </div>
-
-                <div class="pt-30">
-                        <p class="underline-secondary mb-10"><b>Email:</b></p>
-                        <a href="mailto:yourmail@gmail.com"> yourmail@gmail.com</a>
-                </div>
-
-                <ul class="icon mt-30">
-                        <li><a href="#"><i class="ion-social-pinterest"></i></a></li>
-                        <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                        <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                        <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                        <li><a href="#"><i class="ion-social-linkedin"></i></a></li>
-                        <li><a href="#"><i class="ion-social-vimeo"></i></a></li>
-                </ul>
-
-        </div><!-- container -->
-</footer>
+<?php include 'footer.php'; ?>
 
 <!-- SCIPTS -->
 <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
