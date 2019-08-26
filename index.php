@@ -30,7 +30,7 @@
 
                         <h5><b>Restaurant</b></h5>
                         <h1 class="mt-30 mb-15">Serbili</h1>
-                        <h5><a href="03_menu.html" class="btn-primaryc plr-25"><b>Découvrir le Menu</b></a></h5>
+                        <h5><a href="03_menu.php" class="btn-primaryc plr-25"><b>Découvrir le Menu</b></a></h5>
                     </div><!-- dplay-tbl-cell -->
                 </div><!-- dplay-tbl -->
             </div><!-- container -->
@@ -409,7 +409,7 @@
                     </div><!-- food-menu -->
                 </div><!-- row -->
 
-                <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="03_menu.html" class="btn-primaryc plr-25"><b>Découvrir le Menu</b></a></h6>
+                <h6 class="center-text mt-40 mt-sm-20 mb-30"><a href="03_menu.php" class="btn-primaryc plr-25"><b>Découvrir le Menu</b></a></h6>
             </div><!-- container -->
         </section>
         <?php include 'footer.php'; ?>

@@ -4,8 +4,8 @@
 
         <div class="right-area mr-40">
             <h6>
-                <a class="plr-20 mr-15 color-white btn-fill-primary" href="#">COMMANDER: +213 558 74 69 73</a>
-                <a class="plr-20 color-white btn-fill-primary" href="07_login.php">Commander en ligne</a>
+                <a class="plr-20 mr-15 mb-20 color-white btn-fill-primary" href="#">Commandez: +213 558 74 69 73</a>
+                <a class="plr-20 color-white btn-fill-primary" href="07_login.php">Commandez en ligne</a>
             </h6>
         </div><!-- right-area -->
 
