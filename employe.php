@@ -97,17 +97,33 @@
             die("Connection failed: " . $conn->connect_error);
         }
         
-        $sql = "SELECT login FROM Client where Login='".$_POST['login']."' and Password='".$_POST['password']."'";
+        $sql = "SELECT Grade FROM Employe where Login='".$_POST['login']."' and Password='".$_POST['password']."'";
         $result = $conn->query($sql);
-
+         
         if ($result->num_rows > 0) {
-            
-            echo "authentification réussite";
-            $_SESSION['valid'] = true;
-            $_SESSION['timeout'] = time();
-            $row = $result->fetch_assoc();
-            $_SESSION['username'] = $row["login"];
+			
+            while($row = $result->fetch_assoc()) {
+            $grade = $row["Grade"];
+            switch ($grade) {
+            case "Caissier":
+            header("Location: menuCaissier.php");
+            break;
+            case 'Serveur':
+            header("Location: menuServeur.php");
+            break;
+            case 'Cuisinier':
+            header("Location: menuCuisinier.php");
+            break;
+            default:
             header("Location: index.php");
+            }
+            }	
+            echo "authentification réussite";
+            //$_SESSION['valid'] = true;
+            //$_SESSION['timeout'] = time();
+            //$row = $result->fetch_assoc();
+            //$_SESSION['username'] = $row["login"];
+			
             
         } else {
             echo "authentification échoué";
