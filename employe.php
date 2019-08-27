@@ -7,6 +7,7 @@
    // error_reporting(E_ALL);
    // ini_set("display_errors", 1);
 ?>
+<?php include 'ConnectDB.php'; ?>
 
 <html lang = "fr">
    
@@ -84,36 +85,45 @@
       
         <?php
          
-        $servername = "localhost";
-        $username = "id10310525_root";
-        $password = "anisanis";
-        $dbname = "id10310525_restaurant";
-        
-        
         if (isset($_POST['log']) && !empty($_POST['login']) 
-               && !empty($_POST['password'])) {
-                   
-        
-        
+              && !empty($_POST['password'])) {
+                 
         // Create connection
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        $instance = ConnectDb::getInstance();
+        $conn = $instance->getConnection();
 
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
         
-        $sql = "SELECT login FROM user where login='".$_POST['login']."' and password='".$_POST['password']."'";
+        $sql = "SELECT Grade FROM Employe where Login='".$_POST['login']."' and Password='".$_POST['password']."'";
         $result = $conn->query($sql);
-
+         
         if ($result->num_rows > 0) {
-            
-            echo "authentification réussite";
-            $_SESSION['valid'] = true;
-            $_SESSION['timeout'] = time();
-            $row = $result->fetch_assoc();
-            $_SESSION['username'] = $row["login"];
+			
+            while($row = $result->fetch_assoc()) {
+            $grade = $row["Grade"];
+            switch ($grade) {
+            case "Caissier":
+            header("Location: menuCaissier.php");
+            break;
+            case 'Serveur':
             header("Location: menuServeur.php");
+            break;
+            case 'Cuisinier':
+            header("Location: menuCuisinier.php");
+            break;
+            default:
+            header("Location: index.php");
+            }
+            }	
+            echo "authentification réussite";
+            //$_SESSION['valid'] = true;
+            //$_SESSION['timeout'] = time();
+            //$row = $result->fetch_assoc();
+            //$_SESSION['username'] = $row["login"];
+			
             
         } else {
             echo "authentification échoué";
