@@ -38,14 +38,14 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="elem-commande">
+                    <tr class="commande">
                         <th>1</th>
                         <td>01/01/2019</td>
                         <td>13:15</td>
                         <td>Locale</td>
                         <td>1</td>
                     </tr>
-                    <tr class="elem-commande">
+                    <tr class="commande">
                         <th>2</th>
                         <td>01/01/2019</td>
                         <td>13:16</td>
@@ -63,6 +63,7 @@
 
         <script>
             $( ".commande" ).click(function() {
+                $(".commande").removeClass("selected");
                 $( this ).toggleClass("selected");
             });	
         </script>
