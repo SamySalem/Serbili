@@ -794,6 +794,8 @@ section {
 
 .bg-semi-blue{ background: #dae0e1; }
 
+.bg-red { background: #ef0030; }
+
 .bg-trinagle-primary{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #EF002E;
     -wekit-transform-origin: right bottom; transform-origin: right bottom;
     -wekit-transform: translateX(50px) rotate(-55deg) scale(2); transform: translateX(50px) rotate(-55deg) scale(2); }
@@ -7462,4 +7464,18 @@ ul.icon li a{ padding: 10px;  }
 }
 .custom-radio h4{
     padding-left: 15px;
+}
+
+.tableau .thead-dark th {
+    color: #fff;
+    background-color: #ef0030;
+    border-color: #ef0030;
+}
+
+.tableau{
+    border-top-left-radius: 20px;
+}
+.anl-cmd{
+    margin: auto;
+    width: 5%;
 }
