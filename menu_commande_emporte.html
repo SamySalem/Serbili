@@ -397,71 +397,67 @@
         <script src="plugin-frameworks/swiper.js"></script>
         <script src="common/scripts.js"></script>
 
-        <script>
 
-            $(document).ready(function(){
+       <script>
+
+            var button = 
+
+
+                "<div class='input-group mb-3'>"+
+                "<div class='input-group-prepend'>"+
+                "<button type='button' "+
+                "class='quantity-left-minus btn btn-danger btn-number' "+
+                "data-type='minus'>"+
+                "<i class='fa fa-minus'></i>"+
+                "</button></div>"+
+                "<input type='text' name='quant[1]' class='form-control input-number quoo' value='1' min='1' max='10'>"+
+                "<div class='input-group-append'>"+
+                "<button type='button' "+
+                "class='quantity-right-plus btn btn-success btn-number' "+
+                "data-type='plus' data-field=''>"+
+                "<i class='fa fa-plus'></i>"+
+                "</button></div></div>";
+            $( ".food-menu" ).click(function() {
+
+                $( this ).toggleClass("selected");
+                var intitule;
+                var prix;
+
+                intitule = $( this ).find('h5 > b').html();
+                prix = $( this ).find('h5 > :nth-child(2)').html();
+
+                //test if selected or not 
+                if($(this).hasClass("selected")){
+                    //if true addline		
+                    $("#liste_commande").append("<tr id='"+intitule.replace(/\s/g, "")+"'><td>"
+                                                +intitule +"</td><td>"
+                                                +prix+"</td><td>"
+                                                +button
+                                                +"</td><td class='prix'> 0 </td></tr>");
+                }
+                else {
+                    //if false remove the line
+                    $("#"+intitule.replace(/\s/g, "")).remove();
+                }
+
+                //=== - & + function ===
                 var quantity = 1;
 
                 $('.quantity-right-plus').click(function(e){
                     e.preventDefault();
-                    var quantity = parseInt($('#quoo').val());
-                    $('#quoo').val(quantity + 1);
+                    var quantity = parseInt($(this).parent().prev().val());
+                    $(this).parent().prev().val(quantity + 1);
                 });
 
                 $('.quantity-left-minus').click(function(e){
                     e.preventDefault();
-                    var quantity = parseInt($('#quoo').val());
+                    var quantity = parseInt($(this).parent().next().val());
                     if(quantity > 1){
-                        $('#quoo').val(quantity - 1);
+                        $(this).parent().next().val(quantity - 1);
                     }
                 });
-            });
+                (obj).closest('tr').next().find('.class');
+            });	
         </script>
-
-
-        <div class="table">
-            <script>
-
-                var button = 
-                    "<div class='input-group mb-3'>"+
-                    "<div class='input-group-prepend'>"+
-                    "<button type='button' "+
-                    "class='quantity-left-minus btn btn-danger btn-number' "+
-                    "data-type='minus'>"+
-                    "<i class='fa fa-minus'></i>"+
-                    "</button></div>"+
-                    "<input type='text' name='quant[1]' class='form-control input-number' id='quoo' value='1' min='1' max='10'>"+
-                    "<div class='input-group-append'>"+
-                    "<button type='button' "+
-                    "class='quantity-right-plus btn btn-success btn-number' "+
-                    "data-type='plus' data-field=''>"+
-                    "<i class='fa fa-plus'></i>"+
-                    "</button></div></div>";
-                $( ".food-menu" ).click(function() {
-
-                    $( this ).toggleClass("selected");
-                    var intitule;
-                    var prix;
-
-                    intitule = $( this ).find('h5 > b').html();
-                    prix = $( this ).find('h5 > :nth-child(2)').html();
-
-                    //test if selected or not 
-                    if($(this).hasClass("selected")){
-                        //if true addline		
-                        $("#liste_commande").append("<tr id='"+intitule.replace(/\s/g, "")+"'><td>"
-                                                    +intitule +"</td><td>"
-                                                    +prix+"</td><td>"
-                                                    +button
-                                                    +"</td><td class='prix'> 0 </td></tr>");
-                    }
-                    else {
-                        //if false remove the line
-                        $("#"+intitule.replace(/\s/g, "")).remove();
-                    }
-                });	
-            </script>
-
-        </div>
     </body>
 </html>
