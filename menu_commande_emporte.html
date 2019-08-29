@@ -411,9 +411,9 @@
                     //if true addline	
 
                  					
-                    $("#liste_commande").append("<tr id='"+intitule+"'><td>"
-                                                +$( this ).find('h5 > b').html()+"</td><td>"
-                                                +prix+"</td><td>"
+                    $("#liste_commande").append("<tr id='"+intitule+"'><td class='plr-10'>"
+                                                +$( this ).find('h5 > b').html()+"</td><td class='plr-10'>"
+                                                +prix+"</td><td class='plr-10'>"
                                                 +"<input id='B"+intitule+"' class='qty'type='number' value='1' min='1' max='10' step='1' />"
                                                 +"</td><td class='priT plr-10'> "+parseInt(prix)+" </td></tr>");
 
