@@ -16,8 +16,6 @@
         <link href="fonts/ionicons.css" rel="stylesheet">
         <link href="common/styles.css" rel="stylesheet">
         <link href="fonts/fa/css/fontawesome-all.min.css" rel="stylesheet">
-
-    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/8B5DB653-A4AB-D74E-92BB-9DCD2D1DB4D7/main.js" charset="UTF-8"></script></head>
     <body>
         
         <?php include 'header.php'; ?>
@@ -404,27 +402,25 @@
 		
 	        <script>
 
-            var button = "<input type='number' value='1' min='1' max='10' step='1' />";
             $( ".food-menu" ).click(function() {
 
                 $( this ).toggleClass("selected");
                 var intitule;
                 var prix;
 
-                intitule = $( this ).find('h5 > b').html();
+                intitule = $( this ).find('h5 > b').html().replace(/\s/g, "");
                 prix = $( this ).find('h5 > :nth-child(2)').html();
 
                 //test if selected or not 
                 if($(this).hasClass("selected")){
-                    //if true addline		
-                    $("#liste_commande").append("<tr id='"+intitule.replace(/\s/g, "")+"'><td>"
+                    //if true addline	
+                 					
+                    $("#liste_commande").append("<tr id='"+intitule+"'><td>"
                                                 +intitule +"</td><td>"
                                                 +prix+"</td><td>"
-                                                +button
+                                                +"<input id='B"+intitule+"' type='number' value='1' min='1' max='10' step='1' />"
                                                 +"</td><td class='prix'> 0 </td></tr>");
-
-					$("input[type='number']").inputSpinner();
-
+					$("#B"+intitule).inputSpinner();
                 }
                 else {
                     //if false remove the line
