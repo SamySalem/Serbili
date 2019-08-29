@@ -415,7 +415,7 @@
                     //if true addline	
                  					
                     $("#liste_commande").append("<tr id='"+intitule+"'><td>"
-                                                +intitule +"</td><td>"
+                                                +$( this ).find('h5 > b').html()+"</td><td>"
                                                 +prix+"</td><td>"
                                                 +"<input id='B"+intitule+"' class='qty'type='number' value='1' min='1' max='10' step='1' />"
                                                 +"</td><td class='priT'> "+parseInt(prix)+" </td></tr>");
@@ -430,8 +430,12 @@
                     //if false remove the line
                     $("#"+intitule.replace(/\s/g, "")).remove();
                 }              
-            });				
-						
+            });
+			 
+			 
+			 
+
+			
         </script>
     </body>
 </html>
