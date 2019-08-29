@@ -16,9 +16,8 @@
         <link href="fonts/ionicons.css" rel="stylesheet">
         <link href="common/styles.css" rel="stylesheet">
         <link href="fonts/fa/css/fontawesome-all.min.css" rel="stylesheet">
+    </head>
     <body>
-        
-        <?php include 'header.php'; ?>
 
 
         <section>
@@ -365,10 +364,10 @@
 
                     <table id='liste_commande'>
                         <tr>
-                            <td class="pr-10">Intitule</td>
-                            <td class="pr-10">Prix unité</td>
-                            <td class="pr-10">Quantité</td>		
-                            <td class="pr-10">Prix totale</td>
+                            <td class="plr-10">Intitule</td>
+                            <td class="plr-10">Prix unité</td>
+                            <td class="plr-10">Quantité</td>		
+                            <td class="plr-10">Prix totale</td>
                         </tr>
 
                     </table>
@@ -415,11 +414,11 @@
                 if($(this).hasClass("selected")){
                     //if true addline	
                  					
-                    $("#liste_commande").append("<tr id='"+intitule+"'><td>"
-                                                +intitule +"</td><td>"
-                                                +prix+"</td><td>"
+                    $("#liste_commande").append("<tr id='"+intitule+"'><td class='plr-10'>"
+                                                +intitule +"</td><td class='plr-10'>"
+                                                +prix+"</td><td class='plr-10'>"
                                                 +"<input id='B"+intitule+"' type='number' value='1' min='1' max='10' step='1' />"
-                                                +"</td><td class='prix'> 0 </td></tr>");
+                                                +"</td><td class='prix plr-10'> 0 </td></tr>");
 					$("#B"+intitule).inputSpinner();
                 }
                 else {

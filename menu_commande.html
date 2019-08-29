@@ -69,6 +69,7 @@
                         <span class="checkmark"></span>
                     </label>
                 </div>
+                
                 <div class="heading">
                     <h2>Menu</h2>
                 </div>
@@ -411,10 +412,10 @@
 
                     <table id='liste_commande'>
                         <tr>
-                            <td class="pr-10">Intitule</td>
-                            <td class="pr-10">Prix unité</td>
-                            <td class="pr-10">Quantité</td>		
-                            <td class="pr-10">Prix totale</td>
+                            <td class="plr-10">Intitule</td>
+                            <td class="plr-10">Prix unité</td>
+                            <td class="plr-10">Quantité</td>		
+                            <td class="plr-10">Prix totale</td>
                         </tr>
 
                     </table>
@@ -435,76 +436,44 @@
             }
         </style>
 
-
-        <!-- SCIPTS -->
-        <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
+        <!-- SCIPTS -->     
+		<script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
         <script src="plugin-frameworks/bootstrap.min.js"></script>
         <script src="plugin-frameworks/swiper.js"></script>
         <script src="common/scripts.js"></script>
 
+		
+			<script>
+			
+			</script>
+		
+	        <script>
 
-        <script>
-
-            var button = 
-
-
-                "<div class='input-group mb-3'>"+
-                "<div class='input-group-prepend'>"+
-                "<button type='button' "+
-                "class='quantity-left-minus btn btn-danger btn-number' "+
-                "data-type='minus'>"+
-                "<i class='fa fa-minus'></i>"+
-                "</button></div>"+
-                "<input type='text' name='quant[1]' class='form-control input-number quoo' value='1' min='1' max='10'>"+
-                "<div class='input-group-append'>"+
-                "<button type='button' "+
-                "class='quantity-right-plus btn btn-success btn-number' "+
-                "data-type='plus' data-field=''>"+
-                "<i class='fa fa-plus'></i>"+
-                "</button></div></div>";
             $( ".food-menu" ).click(function() {
 
                 $( this ).toggleClass("selected");
                 var intitule;
                 var prix;
 
-                intitule = $( this ).find('h5 > b').html();
+                intitule = $( this ).find('h5 > b').html().replace(/\s/g, "");
                 prix = $( this ).find('h5 > :nth-child(2)').html();
 
                 //test if selected or not 
                 if($(this).hasClass("selected")){
-                    //if true addline		
-                    $("#liste_commande").append("<tr id='"+intitule.replace(/\s/g, "")+"'><td>"
-                                                +intitule +"</td><td>"
-                                                +prix+"</td><td>"
-                                                +button
-                                                +"</td><td class='prix'> 0 </td></tr>");
+                    //if true addline	
+                 					
+                    $("#liste_commande").append("<tr id='"+intitule+"'><td class='plr-10'>"
+                                                +intitule +"</td><td class='plr-10'>"
+                                                +prix+"</td><td class='plr-10'>"
+                                                +"<input id='B"+intitule+"' type='number' value='1' min='1' max='10' step='1' />"
+                                                +"</td><td class='prix plr-10'> 0 </td></tr>");
+					$("#B"+intitule).inputSpinner();
                 }
                 else {
                     //if false remove the line
                     $("#"+intitule.replace(/\s/g, "")).remove();
-                }
-
-                //=== - & + function ===
-                var quantity = 1;
-
-                $('.quantity-right-plus').click(function(e){
-                    e.preventDefault();
-                    var quantity = parseInt($(this).parent().prev().val());
-                    $(this).parent().prev().val(quantity + 1);
-                });
-
-                $('.quantity-left-minus').click(function(e){
-                    e.preventDefault();
-                    var quantity = parseInt($(this).parent().next().val());
-                    if(quantity > 1){
-                        $(this).parent().next().val(quantity - 1);
-                    }
-                });
-                (obj).closest('tr').next().find('.class');
+                }              
             });	
         </script>
-
-
     </body>
 </html>
