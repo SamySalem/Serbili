@@ -19,7 +19,7 @@
     </head>
     <body>
 
-<?php include 'header.php'; ?>
+        <?php include 'header.php'; ?>
 
 
         <section class="bg-1 h-900x main-slider pos-relative">
@@ -68,9 +68,9 @@
         </div>
 
         <?php include 'menuIndex.php'; ?>
-        
+
         <?php include 'footer.php'; ?>
-        
+
         <?php include 'scripts.php'; ?>
 
     </body>
