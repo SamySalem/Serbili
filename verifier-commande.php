@@ -89,6 +89,12 @@
                                 <td></td>
                             </tr>
                         </table>
+                        <div class="dplay-tbl">
+                            <div class="dplay-tbl-cell center-text">
+                                <a class="p-10 mt-10 btn btn-success" href="#"><b>Accepter</b></a>
+                                <a class="p-10 mt-10 btn btn-danger" href="#"><b>Refuser</b></a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
