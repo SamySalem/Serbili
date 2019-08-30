@@ -69,24 +69,30 @@
 		// dans le cas le serveur utilise numero de commmande
 		if(!empty($num_commande) ){
 		
-        $sql = "SELECT numero_commande FROM commande where numero_commande=".$num_commande." and payee='prete'";
+        $sql = "SELECT numero_commande FROM Commande where numero_commande=".$num_commande." and payee='prete'";
         $result = $conn->query($sql);
          
         if ($result->num_rows > 0) {
-		$sql = "UPDATE commande SET payee='prete' WHERE numero_commande=".$num_commande;
+		$sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
 		$conn->query($sql);
         } else {
             echo "cette commande n'est pas encore prête";
         }
+		}
         		
 		// dans le cas le serveur utilise numero de table
 		else {
 			
-		$sql = "SELECT numero_table,numero_commande FROM commande_locale as cl,commande as c where cl.numero_commande=c.numero_commande and cl.numero_table=".$num_table." and cl.payee='prete'";
+		$sql = "SELECT numero_table,numero_commande FROM Commande_Locale as cl,Commande as c where cl.Commande_numero_commande=c.numero_commande and cl.numero_table=".$num_table." and c.payee='prete'";
         $result = $conn->query($sql);
-        $num_commande = $row["numero_table"];
+        
         if ($result->num_rows > 0) {
-		$sql = "UPDATE commande SET payee='prete' WHERE numero_commande=".$num_commande;
+            
+            while($row = $result->fetch_assoc()){
+            $num_commande = $row["numero_commande"];  
+            }
+            
+		$sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
 		$conn->query($sql);
         } else {
             echo "cette commande n'est pas encore prête";
@@ -95,8 +101,6 @@
 		}
 		$conn->close();
 		}
-        ?>
-		
         ?>
 		
         <!-- SCIPTS -->
