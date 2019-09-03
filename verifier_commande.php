@@ -1,8 +1,4 @@
-<?php
-   ob_start();
-   session_start();
-?>
-<?php include 'ConnectDB.php'; ?>
+<!DOCTYPE HTML>
 <html lang="en">
     <head>
         <title>Serbili</title>
@@ -39,7 +35,10 @@
 
             <div class="wrapper">
 			<?php
-          
+            
+			if (isset($_POST['log']) && !empty($_POST['login']) 
+              && !empty($_POST['password'])) {
+                 
 			// Create connection
 			$instance = ConnectDb::getInstance();
 			$conn = $instance->getConnection();
@@ -97,10 +96,10 @@
                             "</tr>";
 			}
 			echo "</table>".
-                        "<div class='dplay-tbl'>".
-                            "<div class='dplay-tbl-cell center-text'>".
-                                "<a class='p-10 mt-10 btn btn-success' href='#'><b>Accepter</b></a>".
-                                "<a class='p-10 mt-10 btn btn-danger' href='#'><b>Refuser</b></a>".
+                        "<div class="dplay-tbl">".
+                            "<div class="dplay-tbl-cell center-text">".
+                                "<a class="p-10 mt-10 btn btn-success" href="#"><b>Accepter</b></a>".
+                                "<a class="p-10 mt-10 btn btn-danger" href="#"><b>Refuser</b></a>".
                             "</div>".
                         "</div>".
                     "</div>".
@@ -117,7 +116,7 @@
             echo 'pas de commande a vérifier';
         }
             $conn->close();
-        
+        }
         ?>
                 <div class="accordion">
                     <div class="panel modify">
