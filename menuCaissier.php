@@ -40,81 +40,85 @@
                         <p>veuillez entrer le numero de commande:</p>
                         <input id="input2" name="num_commande" type="number">
                     </div>
-                    <button class="btn btn-info btn-md btn-block text-uppercase mt-3 mb-1" type="submit" name="Encaisser"><i class="fas fa-calendar-check"></i> Encaisser</button>
-                    <div id="resultat" class="mb-3"></div>
+                    
+                    <?php
+
+                    // define variables and set to empty values
+                    $num_table = $num_commande = "";		
+
+                    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                        $num_table = test_input($_POST["num_table"]);
+                        $num_commande = test_input($_POST["num_commande"]);
+                    }
+
+                    function test_input($data) {
+                        $data = trim($data);
+                        $data = stripslashes($data);
+                        $data = htmlspecialchars($data);
+                        return $data;
+                    }
+
+                    if (isset($_POST['Encaisser']) && (!empty($num_commande) 
+                                                       || !empty($num_table))) {
+
+                        // Create connection
+                        $instance = ConnectDb::getInstance();
+                        $conn = $instance->getConnection();
+
+
+                        // Check connection
+                        if ($conn->connect_error) {
+                            die("Connection failed: " . $conn->connect_error);
+                        }
+
+
+                        // dans le cas le serveur utilise numero de commmande
+                        if(!empty($num_commande) ){
+
+                            $sql = "SELECT numero_commande FROM Commande where numero_commande=".$num_commande." and payee='prete'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
+                                $conn->query($sql);
+                                echo "Opération faite";
+                            } else {
+                                echo "cette commande n'est pas encore prête";
+                            }
+                        }
+
+                        // dans le cas le serveur utilise numero de table
+                        else {
+
+                            $sql = "SELECT numero_table,numero_commande FROM Commande_Locale as cl,Commande as c where cl.Commande_numero_commande=c.numero_commande and cl.numero_table=".$num_table." and c.payee='prete'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+
+                                while($row = $result->fetch_assoc()){
+                                    $num_commande = $row["numero_commande"];  
+                                }
+
+                                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
+                                $conn->query($sql);
+                                echo "Opération faite";
+                            } else {
+                                echo "cette commande n'est pas encore prête";
+                            }
+
+                        }
+                        $conn->close();
+                    }
+                    ?>
+                    
+                    <button class="btn btn-info btn-md btn-block text-uppercase mt-3 mb-1" type="submit" name="Encaisser">Encaisser</button>
                     <input type="hidden" name="hidden" value="CalculerRecette">
                 </form>
             </div>
         </div>
     </body>
 
-    <?php
 
-    // define variables and set to empty values
-    $num_table = $num_commande = "";		
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $num_table = test_input($_POST["num_table"]);
-        $num_commande = test_input($_POST["num_commande"]);
-    }
-
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
-
-    if (isset($_POST['Encaisser']) && (!empty($num_commande) 
-                                       || !empty($num_table))) {
-
-        // Create connection
-        $instance = ConnectDb::getInstance();
-        $conn = $instance->getConnection();
-
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-
-        // dans le cas le serveur utilise numero de commmande
-        if(!empty($num_commande) ){
-
-            $sql = "SELECT numero_commande FROM Commande where numero_commande=".$num_commande." and payee='prete'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
-                $conn->query($sql);
-            } else {
-                echo "cette commande n'est pas encore prête";
-            }
-        }
-
-        // dans le cas le serveur utilise numero de table
-        else {
-
-            $sql = "SELECT numero_table,numero_commande FROM Commande_Locale as cl,Commande as c where cl.Commande_numero_commande=c.numero_commande and cl.numero_table=".$num_table." and c.payee='prete'";
-            $result = $conn->query($sql);
-
-            if ($result->num_rows > 0) {
-
-                while($row = $result->fetch_assoc()){
-                    $num_commande = $row["numero_commande"];  
-                }
-
-                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
-                $conn->query($sql);
-            } else {
-                echo "cette commande n'est pas encore prête";
-            }
-
-        }
-        $conn->close();
-    }
-    ?>
 
     <!-- SCIPTS -->
     <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
