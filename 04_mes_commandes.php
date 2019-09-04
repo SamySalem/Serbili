@@ -49,7 +49,7 @@ session_start();
                 }
 
                 // récuprer la liste des commandes 
-                $sql = "SELECT numero_commande,Heur,Adresse FROM Commande as c, Commande_Internet as ci where c.numero_commande=ci.Commande_numero_commande and ci.Verifie=0 and ci.Client_Login='".$_SESSION['id']."'";
+                $sql = "SELECT numero_commande,Heur,Adresse,Payee FROM Commande as c, Commande_Internet as ci where c.numero_commande=ci.Commande_numero_commande and ci.Verifie=0 and ci.Client_Login='".$_SESSION['id']."'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
