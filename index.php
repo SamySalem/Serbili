@@ -1,8 +1,8 @@
-<!DOCTYPE HTML>
 <?php
 			session_start();
             session_regenerate_id();
 ?>
+<!DOCTYPE HTML>
 <html lang="en">
     <head>
         <title>Serbili</title>

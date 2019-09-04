@@ -1,9 +1,8 @@
-<!DOCTYPE HTML>
 <?php
    ob_start();
    session_start();
 ?>
-
+<!DOCTYPE HTML>
 <?
    // error_reporting(E_ALL);
    // ini_set("display_errors", 1);

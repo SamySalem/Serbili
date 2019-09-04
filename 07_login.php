@@ -1,8 +1,8 @@
-<!DOCTYPE HTML>
 <?php
 ob_start();
 session_start();
 ?>
+<!DOCTYPE HTML>
 <?php include 'ConnectDB.php'; ?>
 <html lang="fr">
     <head>
