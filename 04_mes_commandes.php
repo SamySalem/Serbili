@@ -90,8 +90,9 @@ session_start();
 						
 						if($Etat==='en attente')
 						{ echo"<div class='dplay-tbl'>".
-                            "<div class='dplay-tbl-cell center-text'>".                      
-                            "<a class='p-10 mt-10 btn btn-danger' href='#'><b>Annuler</b></a>".
+                            "<div class='dplay-tbl-cell center-text'>".
+                            "<a class='p-10 mt-10 btn btn-danger annuler' name='".$numero_commande."' href='#'><b>Annuler</b></a>".
+							"<a class='msg'>cette commande a bien été annuler</a>".
                             "</div>".
 							"</div>";
 						}	
@@ -119,9 +120,35 @@ session_start();
                 border-top-right-radius: 0px;
             }
         </style>
+		
+		
+		<?php
+		
+		if ($_SERVER['REQUEST_METHOD'] === 'POST'
+              && $_POST['numero_commande']!==0) {
+				  
+		// Create connection
+        $instance = ConnectDb::getInstance();
+        $conn = $instance->getConnection();
 
+        // Check connection
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        // récuprer la liste des commandes 
+        $sql = "UPDATE Commande SET Etat='refuse' WHERE numero_commande=".$_POST['numero_commande'];
+        $conn->query($sql);
+		
+		$_POST['numero_commande'] = 0; 
+		
+		}
+		
+		?>
+		
         <script>
             $(document).ready(function(){
+				$('.msg').hide();
                 $(".panel").click(function(){
                     $(this).toggleClass("modify-radius");
                     $(this).next().toggleClass("modify-radiu");
@@ -129,6 +156,24 @@ session_start();
                     $(this).parent().siblings().find('.panel-content').slideUp();
                 });
             });
+			
+			
+			$('.annuler').click(function(){
+				alert($( this ).attr('name'));
+				var request = $.ajax({
+				url: "04_mes_commandes.php",
+				type: "POST",
+				data: {numero_commande : $( this ).attr('name')},
+				dataType: "html"
+			});
+			request.done(function() {
+			$( this ).hide();
+			$( this ).next().show();
+			});
+			request.fail(function(jqXHR, textStatus) {
+				alert( "Request failed: " + textStatus );
+			});
+			});
         </script>
 			
         </section>
