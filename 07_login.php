@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+ob_start();
+session_start();
+?>
+<?php include 'ConnectDB.php'; ?>
+<html lang="fr">
     <head>
         <title>Serbili</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,53 +23,84 @@
     <body>
 
 
-        <header>
-            <div class="container">
-                <a class="logo" href="#"><img src="images/logo-white.png" alt="Logo"></a>
-
-                <a class="menu-nav-icon" data-menu="#main-menu" href="#"><i class="ion-navicon"></i></a>
-
-                <div class="right-area mr-40">
-                    <h6>
-                        <a class="plr-20 mr-15 color-white btn-fill-primary" href="#">COMMANDER: +213 558 74 69 73</a>
-                    </h6>
-                </div><!-- right-area -->
-
-                <ul class="main-menu font-mountainsre" id="main-menu">
-                    <li><a href="index.php">ACCUEIL</a></li>
-                    <li><a href="02_about_us.php">A PROPOS DE NOUS</a></li>
-                    <li><a href="03_menu.php">MENU</a></li>
-                    <li><a href="05_contact.php">CONTACTEZ NOUS</a></li>
-                </ul>
-
-                <div class="clearfix"></div>
-            </div><!-- container -->
-        </header>
-
-        <section class="bg-7 h-100x">
-        </section>
+        <<?php include 'header.php'; ?>
 
         <section class="counter-section section center-text mt--60" id="counter">
             <div class="container col-md-4 rounded mx-auto d-block">
-                <form class="form-style-1 placeholder-1">
+                <form class="form-style-1 placeholder-1" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
                     <div class="row">
-                        <h4 class="mb-10 ml-20">Login :</h4>
-                        <div class="col-md-12"><input class="mb-20" type="text" placeholder="Pseudo">  </div>
-                        <div class="col-md-12"><input class="mb-20" type="text" placeholder="Mot de passe">  </div>
+                        <h4 class="mb-10 ml-20">Authentification :</h4>
+                        <div class="col-md-12"><input class="mb-20" name='login' type="text" placeholder="Pseudo">  </div>
+                        <div class="col-md-12"><input class="mb-20" name='password' type="password" placeholder="Mot de passe">  </div>
                     </div><!-- row -->
-                    <h6 class="center-text mb-30"><a href="#" class="btn-primaryc plr-25"><b>Connexion</b></a></h6>
+                    <h6 class="center-text mb-30"><button name="log" type='submit' href="#" class="btn-primaryc plr-25"><b>Connexion</b></button></h6>
                 </form>
+				<?php
+						
+				if (isset($_POST['log']) && !empty($_POST['login']) 
+				&& !empty($_POST['password'])) {
+                
+				// Create connection
+				$instance = ConnectDb::getInstance();
+				$conn = $instance->getConnection();
+
+				// Check connection
+				if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+				}
+        
+				$sql = "SELECT * FROM Client where Login='".$_POST['login']."' and Password='".$_POST['password']."'";
+				$result = $conn->query($sql);
+				
+				if ($result->num_rows > 0) {
+				$row = $result->fetch_assoc();
+				$_SESSION['id']= $row['Login'];
+				$_SESSION['authenticated']=true;
+				header("Location: index.php");
+				}else{
+				echo "Votre pseudo ou mots de passe est incorrecte"; 
+				}
+				$conn->close();
+				}
+				?>
                 <div class="hline"></div>
-                <form class="form-style-1 placeholder-1">
+                <form class="form-style-1 placeholder-1" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
                     <div class="row">
                         <p class="col-12 font-13">Vous n'avez pas un compte?</p>
-                        <h4 class="mb-10 ml-20">inscrire :</h4>
-                        <div class="col-md-12"><input class="mb-20" type="text" placeholder="Pseudo">  </div>
-                        <div class="col-md-12"><input class="mb-20" type="text" placeholder="Mot de passe">  </div>
-                        <div class="col-md-12"><input class="mb-20" type="number" placeholder="Téléphone">  </div>
+                        <h4 class="mb-10 ml-20">Inscription :</h4>
+                        <div class="col-md-12"><input class="mb-20" type="text" name='login2' placeholder="Pseudo">  </div>
+                        <div class="col-md-12"><input class="mb-20" type="password" name='password2' placeholder="Mot de passe">  </div>
+                        <div class="col-md-12"><input class="mb-20" type="number" name='telephone' placeholder="Téléphone">  </div>
                     </div><!-- row -->
-                    <h6 class="center-text"><a href="#" class="btn-primaryc plr-25"><b>Inscription</b></a></h6>
+                    <h6 class="center-text"><button name="register" type='submit' href="#" class="btn-primaryc plr-25"><b>s'inscrire</b></button></h6>
                 </form>
+				<?php
+						
+				if (isset($_POST['register']) && !empty($_POST['login2']) 
+				&& !empty($_POST['password2']) && !empty($_POST['telephone'])) {
+                
+				// Create connection
+				$instance = ConnectDb::getInstance();
+				$conn = $instance->getConnection();
+
+				// Check connection
+				if ($conn->connect_error) {
+				die("Connection failed: " . $conn->connect_error);
+				}
+        
+				$sql = "INSERT INTO Client VALUES ('".$_POST['login2']."', '".$_POST['password2']."',0, ".$_POST['telephone'].")";
+				
+				
+				if($conn->query($sql) === TRUE){
+				echo "<a>Inscription réussite veuillez vous authentifier ci dessus.</a>"; 
+				}
+				else{
+				echo "<a>Ce pseudo est deja utiliser veuillez en choisir un autre.</a>";
+					
+				}
+				$conn->close();
+				}
+				?>
             </div><!-- container-->
         </section><!-- counter-section-->
 
