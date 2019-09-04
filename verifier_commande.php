@@ -108,13 +108,7 @@ session_start();
                             "</div>".
                             "</div>";
                     }	
-
-                    //$_SESSION['valid'] = true;
-                    //$_SESSION['timeout'] = time();
-                    //$row = $result->fetch_assoc();
-                    //$_SESSION['username'] = $row["login"];
-
-
+					
                 } else {
                     echo 'pas de commande a vérifier';
                 }

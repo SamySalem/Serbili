@@ -76,11 +76,11 @@
                         // dans le cas le serveur utilise numero de commmande
                         if(!empty($num_commande) ){
 
-                            $sql = "SELECT numero_commande FROM Commande where numero_commande=".$num_commande." and payee='prete'";
+                            $sql = "SELECT numero_commande FROM Commande where numero_commande=".$num_commande." and Etat='prete'";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
-                                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
+                                $sql = "UPDATE Commande SET Etat='payee' WHERE numero_commande=".$num_commande;
                                 $conn->query($sql);
                                 echo "Opération faite";
                             } else {
@@ -91,7 +91,7 @@
                         // dans le cas le serveur utilise numero de table
                         else {
 
-                            $sql = "SELECT numero_table,numero_commande FROM Commande_Locale as cl,Commande as c where cl.Commande_numero_commande=c.numero_commande and cl.numero_table=".$num_table." and c.payee='prete'";
+                            $sql = "SELECT numero_table,numero_commande FROM Commande_Locale as cl,Commande as c where cl.Commande_numero_commande=c.numero_commande and cl.numero_table=".$num_table." and c.Etat='prete'";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {
@@ -100,7 +100,7 @@
                                     $num_commande = $row["numero_commande"];  
                                 }
 
-                                $sql = "UPDATE Commande SET payee='payee' WHERE numero_commande=".$num_commande;
+                                $sql = "UPDATE Commande SET Etat='payee' WHERE numero_commande=".$num_commande;
                                 $conn->query($sql);
                                 echo "Opération faite";
                             } else {
