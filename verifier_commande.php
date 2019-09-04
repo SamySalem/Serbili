@@ -62,11 +62,12 @@ session_start();
                         $login = $row["Client_Login"];
 
                         //récuperer telephone du client internet
-                        $sql = "SELECT Telephone FROM Client where Login=".$login;
-                        $result2 = $conn->query($sql);
-                        while($row = $result->fetch_assoc()) {
-                            $telephone = $row["Client_Login"];	
-                        }
+                        $sql = "SELECT Telephone FROM Client where Login='".$login."'";
+						$result2 = $conn->query($sql);
+						
+						while($row = $result2->fetch_assoc()) {
+						$telephone = $row["Telephone"];	
+						}
 
                         //afficher les info
                         echo "<div class='accordion'>".
@@ -120,77 +121,7 @@ session_start();
                 $conn->close();
 
                 ?>
-                <div class="accordion">
-                    <div class="panel modify">
-                        <p><b>Username : </b>anisanis</p>
-                        <p><b>N° de téléphone : </b>0558247590</p>
-                        <p><b>Adresse : </b>Zouaghi, constantine.</p>
-                        <p><b>N° de commande : </b>4502</p>
-                        <p><b>Date : </b>05/08/2019 13:18</p>
-                    </div>
-                    <div class="panel-content">
-                        <table class="com-ver">
-                            <tr>
-                                <th>Intitulé</th>
-                                <th>Prix unité (DA)</th>
-                                <th>Quantité</th>
-                            </tr>
-                            <tr>
-                                <td>Salade variee</td>
-                                <td>200 DA</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Shawarma plat</td>
-                                <td>400 DA</td>
-                                <td>2</td>
-                            </tr>
-                        </table>
-                        <div class="dplay-tbl">
-                            <div class="dplay-tbl-cell center-text">
-                                <a class="p-10 mt-10 btn btn-success" href="#"><b>Accepter</b></a>
-                                <a class="p-10 mt-10 btn btn-danger" href="#"><b>Refuser</b></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion">
-                    <div class="panel modify">
-                        <p><b>Username : </b>anisanis</p>
-                        <p><b>N° de téléphone : </b>0558247590</p>
-                        <p><b>Adresse : </b>Zouaghi, constantine.</p>
-                        <p><b>N° de commande : </b>4502</p>
-                        <p><b>Date : </b>05/08/2019 13:18</p>
-                    </div>
-                    <div class="panel-content">
-                        <table class="com-ver">
-                            <tr>
-                                <th>Intitulé</th>
-                                <th>Prix unité (DA)</th>
-                                <th>Quantité</th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <td>Salade variee</td>
-                                <td>200 DA</td>
-                                <td>3</td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Shawarma plat</td>
-                                <td>400 DA</td>
-                                <td>2</td>
-                                <td></td>
-                            </tr>
-                        </table>
-                        <div class="dplay-tbl">
-                            <div class="dplay-tbl-cell center-text">
-                                <a class="p-10 mt-10 btn btn-success" href="#"><b>Accepter</b></a>
-                                <a class="p-10 mt-10 btn btn-danger" href="#"><b>Refuser</b></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
         </div>
 
