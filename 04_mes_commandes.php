@@ -49,7 +49,7 @@ session_start();
                 }
 
                 // récuprer la liste des commandes 
-                $sql = "SELECT numero_commande,Heur,Adresse,Payee FROM Commande as c, Commande_Internet as ci where c.numero_commande=ci.Commande_numero_commande and ci.Verifie=0 and ci.Client_Login='".$_SESSION['id']."'";
+                $sql = "SELECT numero_commande,Heur,Adresse,Etat FROM Commande as c, Commande_Internet as ci where c.numero_commande=ci.Commande_numero_commande and ci.Verifie=0 and ci.Client_Login='".$_SESSION['id']."'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -57,6 +57,7 @@ session_start();
                         $numero_commande = $row["numero_commande"];
                         $date = $row["Heur"];
                         $adresse = $row["Adresse"];
+						$Etat = $row["Etat"];
                                            
                         //afficher les info
                         echo "<div class='accordion'>".
@@ -85,13 +86,16 @@ session_start();
                                 "<td>".$row["Quantite"]."</td>".
                                 "</tr>";
                         }
-                        echo "</table>".
-                            "<div class='dplay-tbl'>".
+                        echo "</table>";
+						
+						if($Etat==='en attente')
+						{ echo"<div class='dplay-tbl'>".
                             "<div class='dplay-tbl-cell center-text'>".                      
                             "<a class='p-10 mt-10 btn btn-danger' href='#'><b>Annuler</b></a>".
                             "</div>".
-                            "</div>".
-                            "</div>".
+							"</div>";
+						}	
+                            echo"</div>".
                             "</div>";
                     }	
 					
