@@ -119,10 +119,9 @@
             }
             }	
             echo "authentification réussite";
-            //$_SESSION['valid'] = true;
-            //$_SESSION['timeout'] = time();
-            //$row = $result->fetch_assoc();
-            //$_SESSION['username'] = $row["login"];
+            $_SESSION['id']= $_POST['login'];
+			$_SESSION['grade']= $grade;
+			$_SESSION['authenticated']=true;
 			
             
         } else {

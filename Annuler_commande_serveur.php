@@ -1,4 +1,8 @@
+<?php
+session_start();
+?>
 <!DOCTYPE HTML>
+<?php include 'ConnectDB.php'; ?>
 <html>
     <head>
         <title>Serbili</title>
@@ -16,21 +20,21 @@
         <link href="fonts/ionicons.css" rel="stylesheet">
         <link href="common/styles.css" rel="stylesheet">
         <link href="fonts/fa/css/fontawesome-all.min.css" rel="stylesheet">
-    </head>
-    <body>
-
-        <!-- SCIPTS -->
+		
+		<!-- SCIPTS -->
         <script src="plugin-frameworks/jquery-3.2.1.min.js"></script>
         <script src="plugin-frameworks/bootstrap.min.js"></script>
         <script src="plugin-frameworks/swiper.js"></script>
         <script src="common/scripts.js"></script>
-        
-        
-        <?php include 'header-employe.php'; ?>
+		
+    </head>
+    <body>
+	
+        <?php include 'header_employe.php'; ?>
         
         <div class="container">
             <table class="table table-hover tableau mt-20">
-                <thead class="thead-dark">
+			<thead class="thead-dark">
                     <tr>
                         <th>Commande N°</th>
                         <th>Date</th>
@@ -40,20 +44,44 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="commande">
-                        <th>1</th>
-                        <td>01/01/2019</td>
-                        <td>13:15</td>
-                        <td>Locale</td>
-                        <td>1</td>
-                    </tr>
-                    <tr class="commande">
-                        <th>2</th>
-                        <td>01/01/2019</td>
-                        <td>13:16</td>
-                        <td>Emporte</td>
-                        <td>Null</td>
-                    </tr>        
+			<?php
+
+                // Create connection
+                $instance = ConnectDb::getInstance();
+                $conn = $instance->getConnection();
+
+                // Check connection
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+
+                // récuprer la liste des commandes 
+                $sql = "SELECT numero_commande,Heur,Type,numero_table FROM Commande as c, Commande_Locale as cl where c.Etat='en attente' and c.numero_commande=cl.Commande_numero_commande";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        $numero_commande = $row["numero_commande"];
+                        $date = $row["Heur"];
+						$numero_table = $row["numero_table"];
+						$type = $row["Type"];
+                                           
+                        //afficher les info
+                        echo "<tr class='commande'>".
+                        "<th>".$numero_commande."</th>".
+                        "<td>01/01/2019</td>".
+                        "<td>13:15</td>".
+                        "<td>".$type."</td>".
+                        "<td>".$numero_table."</td>".
+                    "</tr>";	
+                    }	
+					
+                } else {
+                    echo 'Aucune commande';
+                }
+                $conn->close();
+
+                ?>              
                 </tbody>
             </table>
         </div>
