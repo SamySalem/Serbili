@@ -1024,6 +1024,10 @@ section {
 .btn-fill-primary:hover { background: none; color: #EF0031; }
 .btn-fill-primary.secondary:hover { background: none; color: #1F8330; }
 
+.btn-fill-light { text-align: center; height: 55px; line-height: 53px; border: 1px solid #f8f9fa; background: #f8f9fa; border-radius: 2px; color: #212529; }
+
+.btn-fill-light:hover { background: none; color: #212529; }
+
 .btn-fill-grey { text-align: center; height: 45px; line-height: 43px; border: 1px solid #ccc; background: #ccc; border-radius: 2px; color: #111; }
 
 .btn-fill-grey:hover { border: 1px solid #EF0031; background: none; color: #000; }
@@ -4557,10 +4561,6 @@ ul.icon li a{ padding: 10px;  }
     margin-bottom: 70px !important;
 }
 
-.mt--60 {
-    margin-top: -60px;
-}
-
 .mt-5 {
     margin-top: 5px !important;
 }
@@ -7510,4 +7510,17 @@ ul.icon li a{ padding: 10px;  }
 }
 #ver-com .panel p{
     color: black;
+}
+
+.mt--60 {
+    margin-top: -60px;
+}
+.pt--60 {
+    padding-top: -60px;
+}
+.mt--100{
+    margin-top: -100px;
+}
+.pt{
+    padding-top: 19px;
 }
