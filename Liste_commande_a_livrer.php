@@ -33,7 +33,7 @@ session_start();
 		<?php include 'header_employe.php'; ?>
 
         <div class="container">
-            <h4 class="mtb-20">Commandes en attente de validation :</h4>
+            <h4 class="mtb-20">Liste des commandes a livrer :</h4>
             <div class="wrapper">
                 <?php
 
@@ -47,7 +47,7 @@ session_start();
                 }
 
                 // récuprer la liste des commandes a livrer
-                $sql = "SELECT numero_commande,Heur,Adresse,Client_Login FROM Commande as c,Commande_Internet as ci,Commande_Telephone as ct where c.numero_commande=ct.Commande_numero_commande and c.numero_commande=ci.Commande_numero_commande and type='a livrer'";
+                $sql = "SELECT numero_commande,Heur,Adresse,Client_Login FROM Commande as c,Commande_Internet as ci,Commande_Telephone as ct where c.numero_commande=ct.Commande_numero_commande and c.numero_commande=ci.Commande_numero_commande and c.Type='a livrer'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {

@@ -2,7 +2,7 @@
 // Starting session
 session_start();
 $link = "index.php";
-if(isset($_SESSION['grade']= $grade))
+if(isset($_SESSION['grade']))
 {
 	$link = "employe.php";
 }
