@@ -24,9 +24,9 @@ session_start();
     <body>
 
 
-        <<?php include 'header.php'; ?>
+        <?php include 'header.php'; ?>
 
-        <section class="counter-section section center-text mt--60" id="counter">
+        <section class="counter-section section center-text mt-50" id="counter">
             <div class="container col-md-4 rounded mx-auto d-block">
                 <form class="form-style-1 placeholder-1" role = "form" action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method = "post">
                     <div class="row">

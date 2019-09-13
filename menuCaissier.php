@@ -19,7 +19,9 @@
     </head>
     <body>
 
-        <div class="main container mt-3">
+        <?php include 'header_employe.php'; ?>
+
+        <div class="main container mt-20">
             <div class="content bg-light rounded">
                 <form align="center" id="form" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                     <div class="pt-3 choix">
@@ -41,7 +43,7 @@
                         <p>veuillez entrer le numero de commande:</p>
                         <input id="input2" name="num_commande" type="number">
                     </div>
-                    
+
                     <?php
 
                     // define variables and set to empty values
@@ -111,7 +113,7 @@
                         $conn->close();
                     }
                     ?>
-                    
+
                     <button class="btn btn-info btn-md btn-block text-uppercase mt-3 mb-1" type="submit" name="Encaisser">Encaisser</button>
                     <input type="hidden" name="hidden" value="CalculerRecette">
                 </form>

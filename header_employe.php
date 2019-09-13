@@ -15,3 +15,5 @@
         </div><!-- right-area -->
     </div><!-- container -->
 </header>
+<section class="bg-8 h-200x main-slider pos-relative">
+</section>
