@@ -1024,9 +1024,9 @@ section {
 .btn-fill-primary:hover { background: none; color: #EF0031; }
 .btn-fill-primary.secondary:hover { background: none; color: #1F8330; }
 
-.btn-fill-light { text-align: center; height: 55px; line-height: 53px; border: 1px solid #f8f9fa; background: #f8f9fa; border-radius: 2px; color: #212529; }
+.btn-fill-light { text-align: center; height: 55px; line-height: 53px; border: 1px solid #1F8330; background: #1F8330; border-radius: 2px; color: #FFFFFF; }
 
-.btn-fill-light:hover { background: none; color: #212529; }
+.btn-fill-light:hover { background: none; color: #1F8330; }
 
 .btn-fill-grey { text-align: center; height: 45px; line-height: 43px; border: 1px solid #ccc; background: #ccc; border-radius: 2px; color: #111; }
 

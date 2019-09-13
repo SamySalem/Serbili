@@ -4,7 +4,7 @@
 
         <div class="right-area">
             <h6 class="row">
-                <a class="plr-20 mr-15 mb-20 btn-fill-primary">
+                <a class="plr-20 mr-15 mb-20 btn-fill-light">
                     <?php echo $_SESSION['grade'];?>
                 </a>
                 <a class="plr-20 mr-15 color-white btn-fill-primary">
