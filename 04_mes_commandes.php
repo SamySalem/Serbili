@@ -137,7 +137,7 @@ session_start();
         }
 
         // récuprer la liste des commandes 
-        $sql = "UPDATE Commande SET Etat='refuse' WHERE numero_commande=".$_POST['numero_commande'];
+        $sql = "UPDATE Commande SET Etat='annuler' WHERE numero_commande=".$_POST['numero_commande'];
         $conn->query($sql);
 		
 		$_POST['numero_commande'] = 0; 

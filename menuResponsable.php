@@ -35,13 +35,21 @@ session_start();
 		<div class="row" align='center'>
 			<div class="col-lg-12">
 			  <p>
-				<a href="Prendre_commande_serveur.php" class="btn square btn-danger">
+				<a href="Prendre_commande_responsable.php" class="btn square btn-danger">
 				  <i class="fa fa-user fa-5x"></i><br/>
-				   <br>Prendre une commande
+				   <br>Prendre une commande faite par telephone
 				</a>
-				<a href="Annuler_commande_serveur.php" class="btn square btn-danger">
+				<a href="Annuler_commande_responsable.php" class="btn square btn-danger">
 				  <i class="fa fa-user fa-5x"></i><br/>
-				   <br>Annuler une commande
+				   <br>Annuler une commande faite par telephone
+				</a>
+				<a href="maj_du_menu.php" class="btn square btn-danger">
+				  <i class="fa fa-user fa-5x"></i><br/>
+				   <br>Mettre à jour la liste des plats et boissons (not implemented)
+				</a>
+				<a href="verifier_commande.php" class="btn square btn-danger">
+				  <i class="fa fa-user fa-5x"></i><br/>
+				   <br>Vérifier les commandes faites par Internet
 				</a>
 			  </p>
 			</div>

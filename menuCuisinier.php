@@ -18,5 +18,19 @@
     </head>
     <body>
         <?php include 'header_employe.php'; ?>
+		<div class="row" align='center'>
+			<div class="col-lg-12">
+			  <p>
+				<a href="Prendre_commande_serveur.php" class="btn square btn-danger">
+				  <i class="fa fa-user fa-5x"></i><br/>
+				   <br>Valider une commande
+				</a>
+				<a href="maj_disponibilite.php" class="btn square btn-danger">
+				  <i class="fa fa-user fa-5x"></i><br/>
+				   <br>Mettre a jour la diponibilités des plats et boissons
+				</a>
+			  </p>
+			</div>
+		</div>
     </body>
 </html>

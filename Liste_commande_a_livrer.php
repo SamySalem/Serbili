@@ -45,9 +45,9 @@ session_start();
                 if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                 }
-
+				
                 // récuprer la liste des commandes a livrer
-                $sql = "SELECT numero_commande,Heur,Adresse,Client_Login FROM Commande as c,Commande_Internet as ci,Commande_Telephone as ct where c.numero_commande=ct.Commande_numero_commande and c.numero_commande=ci.Commande_numero_commande and c.Type='a livrer'";
+                $sql = "SELECT numero_commande,Heur,Adresse,Telephone,Client_Login FROM Commande as c,Commande_Internet as ci,Commande_Telephone as ct where (c.numero_commande = ct.Commande_numero_commande or c.numero_commande = ci.Commande_numero_commande) and c.Type='a livrer'";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -56,13 +56,21 @@ session_start();
                         $heur = $row["Heur"];
                         $adresse = $row["Adresse"];
                         $login = $row["Client_Login"];
-
+						$telephone = $row["Telephone"];	
+						
+						if(empty($telephone))
+						{
                         //récuperer telephone du client internet
                         $sql = "SELECT Telephone FROM Client where Login='".$login."'";
 						$result2 = $conn->query($sql);
 						
 						while($row = $result2->fetch_assoc()) {
 						$telephone = $row["Telephone"];	
+						}
+						}
+						else
+						{
+						$login = 'Commande faite par teléphone !';
 						}
 
                         //afficher les info
@@ -94,6 +102,10 @@ session_start();
                                 "<td>".$row["Quantite"]."</td>".
                                 "</tr>";
                         }
+						
+						echo"</table>".
+							"</div>".
+                            "</div>";
                     }	
 					
                 } else {

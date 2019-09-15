@@ -41,7 +41,6 @@ session_start();
                         <th>Heure</th>
                         <th>Type</th>
                         <th>Table N°</th>
-						<th>Annuler</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -74,7 +73,6 @@ session_start();
                         "<td>13:15</td>".
                         "<td>".$type."</td>".
                         "<td>".$numero_table."</td>".
-						"<td><h5 class='anl-cmd'><a name='".$numero_commande."' class='p-10 mb-10 btn btn-danger annuler' href='#'><b>Annuler</b></a></h5></td>".
                     "</tr>";	
                     }	
 					
@@ -94,23 +92,12 @@ session_start();
         </style>
 
         <script>
-           $('.annuler').click(function(){
-				alert($( this ).attr('name'));
-				var request = $.ajax({
-				url: "Annuler_commande_serveur.php",
-				type: "POST",
-				data: {numero_commande : $( this ).attr('name')},
-				dataType: "html"
-			});
-			request.done(function() {
-			$( this ).hide();
-			});
-			request.fail(function(jqXHR, textStatus) {
-				alert( "Request failed: " + textStatus );
-			});
-			});
+            $( ".commande" ).click(function() {
+                $(".commande").removeClass("selected");
+                $( this ).toggleClass("selected");
+            });	
         </script>
-        
+        <h5 class="anl-cmd"><a class="p-10 mb-10 btn btn-danger" href="#"><b>Annuler</b></a></h5>
 
     </body>
 </html>

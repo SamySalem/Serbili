@@ -8,5 +8,5 @@ if(isset($_SESSION['grade']))
 }
 // Destroying session
 session_destroy();
-header("Location: ."$link);
+header("Location: ".$link);
 ?>
